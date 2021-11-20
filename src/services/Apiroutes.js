@@ -41,7 +41,23 @@ export const allPhotos = async () =>{
     catch (error) {
         console.error(error)
     }
-}
+};
+
+export const allPhotosFromAlbum = async (data) => {
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }
+    try {
+        const response = await fetch(apiURL+`photos?albumId=${data}`,options);
+        return response
+    } 
+    catch (error) {
+        console.error(error)
+    }
+};
 //-------------------------------------------------------
 
 //---------------Users-----------------------------------
