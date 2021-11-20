@@ -23,6 +23,10 @@ export const allAlbums = async () =>{
 //-------------------------------------------------------
 
 //---------------Photos----------------------------------
+/**
+ * @description API call to fetch allPhotos
+ * @returns Response fetch containing all the Photos
+ */
 export const allPhotos = async () =>{
     const options = {
         method: 'GET',
@@ -41,6 +45,10 @@ export const allPhotos = async () =>{
 //-------------------------------------------------------
 
 //---------------Users-----------------------------------
+/**
+ * @description API call to fetch allUsers
+ * @returns Response fetch containing all the Users
+ */
 export const allUsers = async () =>{
     const options = {
         method: 'GET',
