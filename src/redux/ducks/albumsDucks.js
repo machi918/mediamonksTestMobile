@@ -37,8 +37,6 @@ export const fetchAlbums = () => async (dispatch, getState) => {
     try {
 
         await getAllAlbums().then(data => {
-            console.log('DATA: ');
-            console.log(data);
             dispatch({type: GET_ALBUM_SUCCESS, payload: data, isLoading: false})
         })
         
