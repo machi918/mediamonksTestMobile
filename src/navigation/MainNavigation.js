@@ -14,11 +14,9 @@ const MainNavigation = ({navigation}) => {
         <NavigationContainer>
 
             <Stack.Navigator>
-                <Stack.Screen name="Home" component={Home} options={{ headerShown: true }} />
+                <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
                 <Stack.Screen name="Album" component={Album} options={{ headerShown: true }} />
                 <Stack.Screen name="PhotoPage" component={PhotoPage} options={{ headerShown: true }} />
-                {/* <Stack.Screen name="Home" component={Home} options={{ headerShown: true }} /> */}
-
             </Stack.Navigator>
         
         </NavigationContainer>
