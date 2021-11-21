@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const {height, width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
     container:{
@@ -6,16 +8,24 @@ const styles = StyleSheet.create({
         height: '100%',
 
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems:'center'
+
     },
 
     albumComponentMain:{
 
-        width: '80%',
+        width: width*0.8,
         height: 200,
 
-        backgroundColor: 'violet',
-        marginVertical: 5
+        backgroundColor: 'rgba(0,0,0,0.2)',
+        marginVertical: 5,
+
+        justifyContent: 'flex-end',
+
+        borderRadius: 10,
+        overflow:'hidden',
+
+
 
     },
     albumComponentMainText: {
@@ -28,11 +38,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.2)',
         marginVertical: 10,
         marginHorizontal: 5,
-        padding: 10,
+
+        overflow:'hidden',
 
         borderRadius: 15,
 
-        // alignItems: 'flex-end'
         justifyContent: 'flex-end'
     },
     albumComponentText: {
