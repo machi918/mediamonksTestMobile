@@ -17,25 +17,20 @@ const Album = ({navigation, route}) => {
     // declaramos displach para llamar a la acción o acciones
     const dispatch = useDispatch();
 
-    const photosState = useSelector(store => store.photos);
+    // const photosState = useSelector(store => store.photos);
+    // const photosFetchState = useSelector(store => store.photos.fetched);
+
+    const photosState = useSelector(store => store.albums);
+    // const photosFetchState = useSelector(store => store.photos.fetched);
 
     const handleOnPressFetch = async () => {
         console.log('Botón presionado');
     }
 
-    useEffect(() => {
-        const fetch = async () => {
-            await dispatch(fetchAllPhotos());
-        }
-
-        fetch();
-
-    }, [idAlbum])
 
     return(
         <SafeAreaView>
             <Text>Album: {title} </Text>
-            <Text>ID: {idAlbum} </Text>
             <FlatList
             data={photosState.photosList.filter(item => item.albumId == idAlbum)}
             numColumns={3}
