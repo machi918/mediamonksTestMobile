@@ -11,7 +11,6 @@ const rootReducer = combineReducers({
     albums : albumsReducer,
     photos: photosReducer,
 
-
 });
 
 //Creating the store
