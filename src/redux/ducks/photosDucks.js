@@ -1,10 +1,11 @@
 import { getAllPhotos, getPhotosAlbum } from "../../controllers/PhotosController";
 
 //Constants
-const initialData = {
+const initialPhotoData = {
 
     photosList: [],
-    isLoading: false
+    isLoading: false,
+    fetched: false
 
 };
 
@@ -17,10 +18,10 @@ const GET_PHOTOS_LOADING = 'GET_ALBUM_LOADING';
 //----------------------------------------------------
 
 //Reducer
-export default function photosReducer(state = initialData, action){
+export default function photosReducer(state = initialPhotoData, action){
     switch (action.type) {
         case GET_PHOTOS_SUCCESS:
-            return {...state, photosList: action.payload, isLoading: action.isLoading};
+            return {...state, photosList: action.payload, isLoading: action.isLoading, fetched: action.fetched};
         case GET_PHOTOS_LOADING:
             return {...state, isLoading: action.isLoading};
         default:
@@ -37,9 +38,7 @@ export const fetchPhotosAlbum = (albumID) => async (dispatch, getState) => {
     try {
 
         await getPhotosAlbum(albumID).then(data => {
-            // console.log('DATA: ');
-            // console.log(data);
-            dispatch({type: GET_PHOTOS_SUCCESS, payload: data, isLoading: false})
+            dispatch({type: GET_PHOTOS_SUCCESS, payload: data, isLoading: false, fetched: true})
         })
         
     } catch (error) {
@@ -51,20 +50,21 @@ export const fetchPhotosAlbum = (albumID) => async (dispatch, getState) => {
 
 export const fetchAllPhotos = () => async (dispatch, getState) => {
 
-    console.log('Into fetchPhotosAlbum ACTION');
     dispatch({type: GET_PHOTOS_LOADING, isLoading: true})
-    try {
+    
+    if(!getState().photos.fetched){
+        try {
+            console.log('Into fetchAllPhotos ACTION');
 
-        await getAllPhotos().then(data => {
-            // console.log('DATA: ');
-            // console.log(data);
-            dispatch({type: GET_PHOTOS_SUCCESS, payload: data, isLoading: false})
-        })
-        
-    } catch (error) {
-        console.log(error);
-    } finally{
-        dispatch({type: GET_PHOTOS_LOADING, isLoading: false})
+            await getAllPhotos().then(data => {
+                dispatch({type: GET_PHOTOS_SUCCESS, payload: data, isLoading: false, fetched: true})
+            })
+            
+        } catch (error) {
+            console.log(error);
+        } finally{
+            dispatch({type: GET_PHOTOS_LOADING, isLoading: false})
+        }
     }
 };
 
