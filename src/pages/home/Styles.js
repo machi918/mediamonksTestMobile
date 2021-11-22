@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import colors from '../../constants/colors';
 
 const {height, width} = Dimensions.get('window');
 
@@ -8,10 +9,23 @@ const styles = StyleSheet.create({
         height: '100%',
 
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems:'center',
 
     },
+    textAlbumTitle:{
+        marginTop: 10, 
+        marginHorizontal: 10, 
+        color: colors.textColor,
+        fontSize: 18
+    },
 
+    carrouselContainer:{
+        width: '100%',
+        height: 225,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
     albumComponentMain:{
 
         width: width*0.8,
@@ -25,11 +39,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         overflow:'hidden',
 
-
-
     },
     albumComponentMainText: {
-        color: 'white'
+
+        color: colors.white
+
     },
     albumComponent: {
         width: 175,
@@ -46,7 +60,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
     albumComponentText: {
-        color: 'white'
+        
+        color: colors.white
     }
 
 
