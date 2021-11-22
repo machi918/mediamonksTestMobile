@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { SafeAreaView, Text, FlatList, View, TouchableOpacity, Dimensions } from 'react-native';
+import { SafeAreaView, Text, FlatList, View, TouchableOpacity, Dimensions, Button } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import styles from './Styles';
+import Loading from '../../components/loading/Loading';
 
 import SingleAlbum from '../../components/singleAlbum/SingleAlbum';
-import Loading from '../../components/loading/Loading';
 
 //Hooks react redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,27 +27,31 @@ const Home = ({navigation}) => {
     const albumsState = useSelector(store => store.albums);
     const albumsStateList= useSelector(store => store.albums.albumsList);
     const photosStateList= useSelector(store => store.albums.photosList);
-
-
-    // console.log('Rendered: '+albumsStateList.length);
-    // console.log('RenderedAAAA: '+photosStateList.length);
-
     
     useEffect(() => {
         const fetch = async () => {
             await dispatch(fetchAlbums());
-            // setasd(albumsListState);
         };
         fetch();
         console.log('USEEFFECT DE HOME');
     }, [])
 
-    
+    const handleClick = async () => {
+        try {
+            await AsyncStorage.removeItem('albums');
+            await AsyncStorage.removeItem('photos');
+          } catch(e) {
+            // remove error
+            console.log('ME ROMPI EN HOME');
+          }
+    }
+
     return(
         <SafeAreaView style={styles.container}>
             {
                 albumsState.isLoading ? <Loading/> : 
                 <View style={{height: '100%', width: '100%'}}>
+                    <Button title={'asdasdasdas'} onPress={() => handleClick()}/>
 
                     <Text style={{marginTop: 15, marginHorizontal: 10, color: 'black'}}>My First 5 Albums</Text>
                     <View style={{width: '100%', height: 225, alignItems: 'center', justifyContent: 'center'}}>
@@ -75,7 +81,7 @@ const Home = ({navigation}) => {
                     columnWrapperStyle={{flexWrap: 'wrap'}}
                     renderItem={item => 
                             <TouchableOpacity onPress={() => navigation.navigate('Album', { title: item.item.title, idAlbum: item.item.id })} style={styles.albumComponent}>
-                                <SingleAlbum title={item.item.title} src={photosStateList.filter(itemList => itemList.albumId == item.item.id)[0].thumbnailUrl}/>
+                                <SingleAlbum title={item.item.title} src={photosStateList.filter(itemList => itemList.albumId == item.item.id)[0].thumbnailUrl} />
                             </TouchableOpacity>
                     }
                     />
