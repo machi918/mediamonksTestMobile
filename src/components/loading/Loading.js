@@ -8,7 +8,7 @@ const Loading = () => {
     return(
 
         <View style={styles.container}>
-            <Image source={require('../../assets/images/mmLogov2.png')} style={styles.imgLogo} resizeMode={'contain'} />
+            <Image source={require('../../assets/images/mmLogo.png')} style={styles.imgLogo} resizeMode={'contain'} />
             <ActivityIndicator size={'large'} color={'black'}/>
 
 
