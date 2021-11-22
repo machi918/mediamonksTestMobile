@@ -4,12 +4,14 @@ import thunk from 'redux-thunk';
 //Reducer imports
 import albumsReducer from '../ducks/albumsDucks';
 import photosReducer from '../ducks/photosDucks';
+import uiReducer from '../ducks/uiDucks';
 
 //Creating the rootReducer
 const rootReducer = combineReducers({
 
     albums : albumsReducer,
     photos: photosReducer,
+    ui: uiReducer,
 
 });
 
