@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView, Text, Button, FlatList, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { SafeAreaView, Text, FlatList, Image, TouchableOpacity, Dimensions } from 'react-native';
 
 import styles from './Styles';
 
 //Hooks react redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPhotosAlbum, fetchAllPhotos } from '../../redux/ducks/photosDucks';
 
 const {height, width} = Dimensions.get('window');
 
@@ -17,16 +16,8 @@ const Album = ({navigation, route}) => {
     // declaramos displach para llamar a la acción o acciones
     const dispatch = useDispatch();
 
-    // const photosState = useSelector(store => store.photos);
-    // const photosFetchState = useSelector(store => store.photos.fetched);
-
+    //Get the state from store
     const photosState = useSelector(store => store.albums);
-    // const photosFetchState = useSelector(store => store.photos.fetched);
-
-    const handleOnPressFetch = async () => {
-        console.log('Botón presionado');
-    }
-
 
     return(
         <SafeAreaView>
@@ -50,7 +41,6 @@ const Album = ({navigation, route}) => {
             />
         </SafeAreaView>
     );
-
 };
 
 export default Album;
