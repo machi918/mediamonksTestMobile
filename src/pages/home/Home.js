@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { SafeAreaView, Text, Button, FlatList, ActivityIndicator, View, TouchableOpacity, Dimensions } from 'react-native';
+import { SafeAreaView, Text, FlatList, View, TouchableOpacity, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import styles from './Styles';
 
 import SingleAlbum from '../../components/singleAlbum/SingleAlbum';
+import Loading from '../../components/loading/Loading';
 
 //Hooks react redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,26 +22,13 @@ const Home = ({navigation}) => {
     const dispatch = useDispatch();
 
     //Get the state from store
-    // const albumsState = useSelector(store => store.albums);
-    // const albumsListState = useSelector(store => store.albums.albumsList);
-    // const albumsListLoading = useSelector(store => store.albums.isLoading);
-    // const asd = useSelector(store => store);
-
-
-    // console.log('ITEMS EN ALBUM LISTA: ' + asd.albums.albumsList.length);
-    // console.log('ITEMS EN PHOTOS LISTA: ' + asd.photos.photosList.length);
-    // console.log(asd);
-
     const albumsState = useSelector(store => store.albums);
-    // const albumsState = useSelector(store => store.albums);
     const albumsStateList= useSelector(store => store.albums.albumsList);
     const photosStateList= useSelector(store => store.albums.photosList);
 
 
     // console.log('Rendered: '+albumsStateList.length);
     // console.log('RenderedAAAA: '+photosStateList.length);
-    
-
 
     
     useEffect(() => {
@@ -52,13 +40,11 @@ const Home = ({navigation}) => {
         console.log('USEEFFECT DE HOME');
     }, [])
 
-
-
     
     return(
         <SafeAreaView style={styles.container}>
             {
-                albumsState.isLoading ? <ActivityIndicator size={'large'}/> : 
+                albumsState.isLoading ? <Loading/> : 
                 <View style={{height: '100%', width: '100%'}}>
 
                     <Text style={{marginTop: 15, marginHorizontal: 10, color: 'black'}}>My First 5 Albums</Text>
