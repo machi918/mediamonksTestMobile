@@ -6,7 +6,7 @@
 - [Solution](#solution)
   - [User Interface](#user-interface)
   - [Global State - Redux](#global-state---redux)
-  - [Persistance](#persistance)
+  - [Persistence](#persistence)
 - [Installation](#installation)
   - [iOS](#ios)
   - [Android](#android)
@@ -52,9 +52,9 @@ I' ve been reading about the redux implementation and since the App's complexity
 [Ducks methodolody](https://github.com/erikras/ducks-modular-redux#the-proposal) to implement `Constants, Actions & Reducers`.
 
 
-### Persistance
+### Persistence
 
-In order to handle the persistance, I have used `React Native Async-Storage`.
+In order to handle the persistence, I have used `React Native Async-Storage`.
 
 The first time that the user opens the App, it checks if there are stored values. If not, it fetches `https://jsonplaceholder.typicode.com/` API to get the 
 Albums & Photos.
