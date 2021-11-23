@@ -41,7 +41,9 @@ const styles = StyleSheet.create({
         backgroundColor: colors.transparentWhite,
 
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        
+        borderRadius: 10,
     }
 });
 
