@@ -4,6 +4,11 @@ import { View, ActivityIndicator, Image } from 'react-native';
 import styles from './Styles';
 import colors from '../../constants/colors';
 
+/**
+ * 
+ * @param {Boolean} uiDark Boolean. DarkMode enabled. 
+ * @description Loading Component. Shown when data is being retrieved.
+ */
 const Loading = ({uiDark}) => {
     return(
         <View style={[styles.container, uiDark ? {backgroundColor: colors.primaryDark} : {backgroundColor: colors.primary}]}>

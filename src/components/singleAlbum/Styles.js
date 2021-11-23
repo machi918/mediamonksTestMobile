@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         color: 'white',
     },
-
     textContainer:{
         justifyContent: 'center',
         width: '100%',
@@ -14,7 +13,6 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: colors.transparentBlack,
     }
-
 });
 
 export default styles;

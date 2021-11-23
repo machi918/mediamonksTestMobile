@@ -2,7 +2,11 @@ import React from 'react';
 import { View, Text, ImageBackground } from 'react-native';
 import styles from './Styles';
 
-const SingleAlbum = ({title, username, length, src, isTop}) => {
+/**
+ * @param {} Atributes title: String, src: String, isTop: Boolean 
+ * @description SingleAlbum component. Renders every album from HomePage. Receives title: String, src: String and isTop: boolean params.
+ */
+const SingleAlbum = ({title, src, isTop}) => {
     return(
         <ImageBackground
         source={{uri :src }}
