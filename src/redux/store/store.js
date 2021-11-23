@@ -10,7 +10,7 @@ import uiReducer from '../ducks/uiDucks';
 const rootReducer = combineReducers({
 
     albums : albumsReducer,
-    photos: photosReducer,
+    photos: photosReducer, //Deprecated, see photoDucks & ReadMe files
     ui: uiReducer,
 
 });
