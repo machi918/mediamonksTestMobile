@@ -6,7 +6,7 @@ const colors = {
     primary: "#DFDEDE",
     primaryDark: "#121212",
     secondary: "#3361A4",
-    secondaryDark: "#3361A4",
+    secondaryDark: "rgb(10,132,255)",
     warning: "#8C0900",
 
     textColor: "#000000",
