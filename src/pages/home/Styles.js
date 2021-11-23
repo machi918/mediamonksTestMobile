@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import colors from '../../constants/colors';
+import sizes from '../../constants/sizes';
 
 const {height, width} = Dimensions.get('window');
 
@@ -10,60 +11,33 @@ const styles = StyleSheet.create({
 
         justifyContent: 'center',
         alignItems:'center',
-
     },
     textAlbumTitle:{
         marginTop: 10, 
-        marginHorizontal: 10, 
+        marginHorizontal: 10,
+
         color: colors.textColor,
         fontSize: 22
     },
-
     carrouselContainer:{
         width: '100%',
-        height: 225,
+        height: (width<sizes.screen_small_max_width ? sizes.mainCarousel_small_height : sizes.mainCarousel_regular_height),
+
         alignItems: 'center',
         justifyContent: 'center',
-
-    },
-    albumComponentMain:{
-
-        width: width*0.8,
-        height: 200,
-        
-        marginVertical: 5,
-
-        justifyContent: 'flex-end',
-
-        borderRadius: 10,
-        overflow:'hidden',
-
-    },
-    albumComponentMainText: {
-
-        color: colors.white
-
     },
     albumComponent: {
-        width: 175,
-        height: 175,
+        width: (width<sizes.screen_small_max_width ? 150 : 175),
+        height: (width<sizes.screen_small_max_width ? 150 : 175),
 
-        backgroundColor: 'rgba(0,0,0,0.2)',
         marginVertical: 10,
         marginHorizontal: 5,
 
-        overflow:'hidden',
-
         borderRadius: 15,
-
-        justifyContent: 'flex-end'
-    },
-    albumComponentText: {
         
-        color: colors.white
+        justifyContent: 'flex-end',
+        overflow:'hidden',
     }
-
-
 });
 
 export default styles;
