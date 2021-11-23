@@ -5,7 +5,6 @@ const colors = {
     secondary: "#3361A4",
     secondaryDark: "#3361A4",
     warning: "#8C0900",
-    // warning: "#BF422C",
 
     textColor: "#000000",
     textColorDark: "rgba(255, 255, 255, 0.8)",
