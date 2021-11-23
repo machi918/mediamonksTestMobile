@@ -20,8 +20,6 @@ const Carousel = ({navigation, albumsData}) => {
     //Dummy Spacer. Makes the album centered.
     const SPACER_SIZE = (width - totalItemWidth) / 2;
 
-    console.log(totalItemWidth);
-
     //Get the state from store
     const photosStateList= useSelector(store => store.albums.photosList);
 
