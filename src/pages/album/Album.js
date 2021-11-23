@@ -4,12 +4,15 @@ import { SafeAreaView, Text, FlatList, Image, TouchableOpacity, Dimensions, View
 import styles from './Styles';
 import colors from '../../constants/colors';
 
-//Hooks react redux
+//Hooks react-redux
 import { useDispatch, useSelector } from 'react-redux';
 
 const {height, width} = Dimensions.get('window');
 
-
+/**
+ * 
+ * @description AlbumPage. Contains all the albums and they are displayed to the user.
+ */
 const Album = ({navigation, route}) => {
     const { title, idAlbum } = route.params;
 
@@ -17,6 +20,10 @@ const Album = ({navigation, route}) => {
     const photosState = useSelector(store => store.albums);
     const isDarkMode = useSelector(store => store.ui.isDarkMode );
 
+    /**
+     * @param {object} item Photo Object
+     * @description Navigates to the selected PhotoPage.
+    */
     const handleClickPhoto = (item) => {
         navigation.navigate('PhotoPage', {title: item.item.title, id: item.item.id, url: item.item.url, thumbnailUrl: item.item.thumbnailUrl})
     };
@@ -39,9 +46,8 @@ const Album = ({navigation, route}) => {
             </View>
 
             <FlatList
-            ListHeaderComponent={()=>
-                <View style={{resizeMode: 'contain', width: width*0.2,height: width*0.2}}></View>
-            }
+            ListHeaderComponent={()=><View style={{resizeMode: 'contain', width: width*0.2,height: width*0.2}}></View>}
+            initialNumToRender={25} //Performance boost on initial render
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
             data={photosState.photosList.filter(item => item.albumId == idAlbum)}
