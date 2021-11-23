@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
         backgroundColor: colors.transparentWhite,
 
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+
+        borderRadius: 10,
     },
     img:{
         minWidth:'100%',
