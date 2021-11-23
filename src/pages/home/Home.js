@@ -49,6 +49,8 @@ const Home = ({navigation}) => {
         navigation.navigate('Album', { title: item.item.title, idAlbum: item.item.id });
     }
 
+    //UI Renders------------------------------------------------------
+
     return(
         <SafeAreaView style={[styles.container, isDarkMode ? {backgroundColor: colors.primaryDark} : {backgroundColor: colors.primary}]}>
             {
@@ -67,7 +69,7 @@ const Home = ({navigation}) => {
                         itemWidth = {width*0.8}
                         renderItem={(item) => 
                             <TouchableOpacity onPress={() => handleOnClickAlbum(item)} style={styles.albumComponentMain}>
-                                <SingleAlbum title={item.item.title} src={photosStateList.filter(itemList => itemList.albumId == item.item.id)[0].thumbnailUrl}/>
+                                <SingleAlbum title={item.item.title} src={photosStateList.filter(itemList => itemList.albumId == item.item.id)[0].thumbnailUrl} isTop={true}/>
                             </TouchableOpacity>
                         }
                         />
@@ -85,7 +87,7 @@ const Home = ({navigation}) => {
                     columnWrapperStyle={{flexWrap: 'wrap'}}
                     renderItem={item => 
                         <TouchableOpacity onPress={() => handleOnClickAlbum(item)} style={styles.albumComponent}>
-                            <SingleAlbum title={item.item.title} src={photosStateList.filter(itemList => itemList.albumId == item.item.id)[0].thumbnailUrl} />
+                            <SingleAlbum title={item.item.title} src={photosStateList.filter(itemList => itemList.albumId == item.item.id)[0].thumbnailUrl} isTop={false} />
                         </TouchableOpacity>
                     }
                     />
