@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Text, Image, TouchableWithoutFeedback, TouchableOpacity,Animated, View } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './Styles';
 import colors from '../../constants/colors';
@@ -15,12 +16,12 @@ const PhotoPage = ({navigation, route}) => {
     const isDarkMode = useSelector(store => store.ui.isDarkMode );
 
 
-    const fadeAnim = useRef(new Animated.Value(1)).current; //Opacity reference Animation
-    const fadeBackground = useRef(new Animated.Value(1)).current; //Background Color w/ interpolation reference Animation
+    const fadeAnim = useRef(new Animated.Value(1)).current; //Opacity reference Animation.
+    const fadeBackground = useRef(new Animated.Value(1)).current; //Background Color w/ interpolation reference Animation.
 
-    const [topLayer,setTopLayer] = useState(true); //If true, header's opacity is 1
+    const [topLayer,setTopLayer] = useState(true); //If true, header's opacity is 1.
     const [topBackLayer,setBackLayer] = useState(true); //If true, background page color, defaults to UI theme.
-    const [touched, setTouched] = useState(true); //If true, back button is available
+    const [touched, setTouched] = useState(true); //If true, back button is available.
 
     useEffect(() => {
         
@@ -86,7 +87,9 @@ const PhotoPage = ({navigation, route}) => {
             >
             <View style={[styles.header, isDarkMode ? {backgroundColor: colors.primaryDark}: {backgroundColor: colors.transparentBlack}]}>
                 <TouchableOpacity style={styles.backButton} onPress={()=>handleGoBack()}>
-                    <Text>BACK</Text>
+                    <Text style={{color: colors.secondaryDark}}>
+                        <Icon name="angle-left" size={46} />
+                    </Text>
                 </TouchableOpacity>
                 <Text style={styles.headerText}>{title}</Text>
             </View>
