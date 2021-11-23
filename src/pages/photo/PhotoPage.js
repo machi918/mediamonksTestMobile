@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { SafeAreaView, Text, Button, Image, TouchableWithoutFeedback, TouchableOpacity,Animated, View   } from 'react-native';
+import { Text, Image, TouchableWithoutFeedback, TouchableOpacity,Animated, View } from 'react-native';
 
 import styles from './Styles';
 
@@ -11,12 +11,14 @@ import colors from '../../constants/colors';
 const PhotoPage = ({navigation, route}) => {
     const {title, thumbnailUrl, url, id} = route.params;
 
+    //FALTA LA DESCRIPCIONNNNNN
+
     //Get the state from store
     const isDarkMode = useSelector(store => store.ui.isDarkMode );
 
 
     const fadeAnim = useRef(new Animated.Value(1)).current; //Opacity reference Animation
-    const fadeBackground = useRef(new Animated.Value(1)).current; //Background Color w/ extrapolation reference Animation
+    const fadeBackground = useRef(new Animated.Value(1)).current; //Background Color w/ interpolation reference Animation
 
     const [topLayer,setTopLayer] = useState(true); //If true, header's opacity is 1
     const [topBackLayer,setBackLayer] = useState(true); //If true, background page color, defaults to UI theme.
