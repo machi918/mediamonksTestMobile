@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, Text, FlatList, Image, TouchableOpacity, Dimensions, View } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import styles from './Styles';
 import colors from '../../constants/colors';
@@ -39,8 +40,9 @@ const Album = ({navigation, route}) => {
 
             <View style={styles.header}>
                 <TouchableOpacity style={styles.backButton} onPress={()=>handleGoBack()}>
-                    <Text>BACK</Text>
-                    {/* HERE GOES THE ICON */}
+                    <Text style={{color: colors.secondaryDark}}>
+                        <Icon name="angle-left" size={46} />
+                    </Text>
                 </TouchableOpacity>
                 <Text style={styles.textHeader}>{title}</Text>
             </View>
