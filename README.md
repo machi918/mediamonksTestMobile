@@ -61,7 +61,7 @@ Albums & Photos.
 
 `photos & album` keys where used. Each one contains the corresponding values.
 
-If you want to delete the persistent data, you could """TODO""". The next time that you open the app, it will fetch the API again.
+If you want to delete the persistent data, you have to touch the "Media.Monks" logo at the top of the Home Page. The next time that you open the App, it will fetch the API again.
 
 
 ## Installation
