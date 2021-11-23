@@ -1,3 +1,6 @@
+/**
+ * @description Object containing all the used colors.
+ */
 const colors = {
 
     primary: "#DFDEDE",
