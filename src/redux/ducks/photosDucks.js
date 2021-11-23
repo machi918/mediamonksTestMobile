@@ -8,7 +8,7 @@ import { getAllPhotos, getPhotosAlbum } from "../../controllers/PhotosController
  * Link: https://github.com/erikras/ducks-modular-redux#the-proposal
  * 
  * IMPORTANT: This particular Duck 'photosDucks' is not being used. I ran into a particular state handler problem.
- * The README file at the root of the proyect has the full problem description.
+ * Already tryed to Google this problem. I hope that, if a meeting with any feedback will be arranged, I could tell you the problem. 
  * 
 */
 
