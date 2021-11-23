@@ -38,7 +38,10 @@ const styles = StyleSheet.create({
     backButton:{
         height: sizes.back_button_height,
         width: sizes.back_button_width,
-        backgroundColor: colors.transparentWhite
+        backgroundColor: colors.transparentWhite,
+
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 
