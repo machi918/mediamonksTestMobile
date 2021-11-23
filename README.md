@@ -37,7 +37,7 @@ The Home Page has a `hand-crafted` main Carousel (where the first 5 albums are b
 
 The Album Page shows all the photos of a certain Album. The name of the album is being shown at the Header.
 
-The Photo Page shows a selected photo. Header disappears after a second for a better photo visualization. Same actions is being triggered if you touch anywhere on the screen.
+The Photo Page shows a selected photo. Header disappears after a second for a better photo visualization. The same action triggers if you touch anywhere on the screen.
 
 `Dark Mode is here!!!`
 Implemented auto dark mode. The App gets the user's phone theme and changes upon the configuration. Every time the user's UI Theme changes, the app 
