@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView, Text, FlatList, View, TouchableOpacity, Dimensions, Button } from 'react-native';
+import { SafeAreaView, Text, FlatList, View, TouchableOpacity, Dimensions, Button, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from './Styles';
@@ -32,11 +32,11 @@ const Home = ({navigation}) => {
         fetch();
     }, []);
 
-    const handleClick = async () => {
+    const handleDeleteStorageClick = async () => {
         try {
             await AsyncStorage.removeItem('albums');
             await AsyncStorage.removeItem('photos');
-            console.log('Storage limpiado');
+            console.log('Storage Cleaned');
         } catch(e) {
             // remove error
             console.log(e);
@@ -50,12 +50,20 @@ const Home = ({navigation}) => {
 
     //UI Renders------------------------------------------------------
 
+    const logoButton = () => {
+        return(
+            <TouchableOpacity style={[styles.logoHeader, isDarkMode ? {borderBottomColor: colors.transparentWhite}: {borderBottomColor: colors.secondary}]} onPress={()=> handleDeleteStorageClick()}>
+                <Image source={require('../../assets/images/mmLogo.png')} style={[styles.logoIMG, isDarkMode ? {tintColor: colors.white}: {tintColor: colors.secondary}]} />
+            </TouchableOpacity>
+        )
+    };
+
     return(
         <SafeAreaView style={[styles.container, isDarkMode ? {backgroundColor: colors.primaryDark} : {backgroundColor: colors.primary}]}>
             {albumsState.isLoading ? <Loading uiDark={isDarkMode}/> : 
 
                 <View style={{height: '100%', width: '100%'}}>
-                    <Button title={'Reset Storage'} onPress={() => handleClick()}/>
+                    {logoButton()}
                     <Text style={[styles.textAlbumTitle, isDarkMode ? {color:colors.textColorDark}:{}]}>My First 5 Albums</Text>
 
                     <View style={[styles.carrouselContainer, isDarkMode ? {backgroundColor: colors.primaryDark} : {backgroundColor: colors.primary}]}>
