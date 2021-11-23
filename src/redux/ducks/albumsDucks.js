@@ -46,22 +46,20 @@ export default function albumsReducer(state = initialData, action){
 //Actions
 export const fetchAlbums = () => async (dispatch, getState) => {
 
-    console.log('Into fetchAlbums ACTION');
     dispatch({type: GET_ALBUM_LOADING, isLoading: true})
     try {
     
         const jsonValueAlbums = await AsyncStorage.getItem('albums');
         if(jsonValueAlbums != null){
-            console.log('STORAGE DE ALBUM CON COSAS');
+            console.log('Storage has data.');
             const jsonValuePhotos = await AsyncStorage.getItem('photos');
-            console.log('STORAGE DE PHOTOS CON COSAS');
             if(jsonValuePhotos != null){
                 dispatch({type: GET_ALBUM_SUCCESS, payload: await JSON.parse(jsonValueAlbums), isLoading: false, lista: await JSON.parse(jsonValuePhotos)});
                 return
             }
 
         }else{
-            console.log('STORAGE DE ALBUM VACIO');
+            console.log('Storage Empty. Fetching...');
         }
         
         const res = await getAllAlbums();
