@@ -1,5 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import colors from '../../constants/colors';
+import sizes from '../../constants/sizes';
+
+const {height, width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
     container:{
@@ -10,7 +13,7 @@ const styles = StyleSheet.create({
     },
 
     header:{
-        height: 75,
+        height: (width<sizes.screen_small_max_width ? sizes.header_small_height : sizes.header_regular_height),
         width: '100%',
 
         backgroundColor: colors.transparentBlack,
@@ -33,8 +36,8 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     backButton:{
-        height: 50,
-        width: 50,
+        height: sizes.back_button_height,
+        width: sizes.back_button_width,
         backgroundColor: colors.transparentWhite
     }
 });
