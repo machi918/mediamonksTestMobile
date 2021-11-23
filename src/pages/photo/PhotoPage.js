@@ -2,16 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Text, Image, TouchableWithoutFeedback, TouchableOpacity,Animated, View } from 'react-native';
 
 import styles from './Styles';
+import colors from '../../constants/colors';
 
 //Hooks react redux
 import { useDispatch, useSelector } from 'react-redux';
-import colors from '../../constants/colors';
 
 
 const PhotoPage = ({navigation, route}) => {
     const {title, thumbnailUrl, url, id} = route.params;
-
-    //FALTA LA DESCRIPCIONNNNNN
 
     //Get the state from store
     const isDarkMode = useSelector(store => store.ui.isDarkMode );
@@ -26,6 +24,7 @@ const PhotoPage = ({navigation, route}) => {
 
     useEffect(() => {
         
+        //The first time the user enters, after 1 second, it hides the top layer.
         const timer = setInterval(()=>{
             handleTouchDisplay();
             clearInterval(timer);
@@ -37,8 +36,10 @@ const PhotoPage = ({navigation, route}) => {
         }
     }, []);
 
+    /**
+     * @description Handles the animations variables.
+     */
     const handleTouchDisplay = ()=>{
-
         Animated.parallel([
             Animated.timing(fadeAnim, {
                 toValue: topLayer ? 0 : 1,
@@ -59,6 +60,7 @@ const PhotoPage = ({navigation, route}) => {
         });
     }
 
+    //BackgroundColor of the page interpolation---------
     const boxInterpolation =  fadeBackground.interpolate({
         inputRange: [0, 1],
         outputRange:[ colors.black, colors.white]
@@ -67,6 +69,7 @@ const PhotoPage = ({navigation, route}) => {
     const animatedStyle = {
         backgroundColor: boxInterpolation
     }
+    //--------------------------------------------------
 
     const handleGoBack = () => {
         if(touched){
