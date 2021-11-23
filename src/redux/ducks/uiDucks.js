@@ -1,3 +1,12 @@
+/**
+ * This is my first time using redux. Previously, I used to handle minimal user's Global Context
+ * using React's API 'useContext (w/ Provider & Consumers)'. It is kwnown that it's not very useful with large and complex Apps.
+ * 
+ * Since the App's complexity is not very high. I opted to use Ducks methodolody.
+ * Link: https://github.com/erikras/ducks-modular-redux#the-proposal
+ * 
+*/
+
 //Constants
 const initialData = {
 

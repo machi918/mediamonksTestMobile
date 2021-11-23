@@ -1,5 +1,17 @@
 import { getAllPhotos, getPhotosAlbum } from "../../controllers/PhotosController";
 
+/**
+ * This is my first time using redux. Previously, I used to handle minimal user's Global Context
+ * using React's API 'useContext (w/ Provider & Consumers)'. It is kwnown that it's not very useful with large and complex Apps.
+ * 
+ * Since the App's complexity is not very high. I opted to use Ducks methodolody.
+ * Link: https://github.com/erikras/ducks-modular-redux#the-proposal
+ * 
+ * IMPORTANT: This particular Duck 'photosDucks' is not being used. I ran into a particular state handler problem.
+ * The README file at the root of the proyect has the full problem description.
+ * 
+*/
+
 //Constants
 const initialPhotoData = {
 
