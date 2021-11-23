@@ -12,11 +12,25 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems:'center',
     },
+
+    logoHeader:{
+        width: '100%',
+        height: 50,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        borderBottomWidth: 2,
+    },
+    logoIMG:{
+        width: '100%',
+        height: '90%',
+        resizeMode: 'contain', 
+    },
+
     textAlbumTitle:{
         marginTop: 10, 
         marginHorizontal: 10,
 
-        color: colors.textColor,
+        color: colors.secondary,
         fontSize: 22
     },
     carrouselContainer:{
