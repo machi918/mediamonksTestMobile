@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, FlatList, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { SafeAreaView, Text, FlatList, Image, TouchableOpacity, Dimensions, View } from 'react-native';
 
 import styles from './Styles';
 import colors from '../../constants/colors';
@@ -11,11 +11,7 @@ const {height, width} = Dimensions.get('window');
 
 
 const Album = ({navigation, route}) => {
-
     const { title, idAlbum } = route.params;
-
-    // declaramos displach para llamar a la acción o acciones
-    const dispatch = useDispatch();
 
     //Get the state from store
     const photosState = useSelector(store => store.albums);
@@ -25,10 +21,27 @@ const Album = ({navigation, route}) => {
         navigation.navigate('PhotoPage', {title: item.item.title, id: item.item.id, url: item.item.url, thumbnailUrl: item.item.thumbnailUrl})
     };
 
+    const handleGoBack = () => {
+        navigation.pop();
+    }
+
+    //UI Renders------------------------------------------------------
+
     return(
         <SafeAreaView style={[styles.container, isDarkMode ? {backgroundColor: colors.primaryDark} : {backgroundColor: colors.primary}]}>
-            <Text style={{color: 'black'}}>Album: {title} </Text>
+
+            <View style={styles.header}>
+                <TouchableOpacity style={styles.backButton} onPress={()=>handleGoBack()}>
+                    <Text>BACK</Text>
+                    {/* HERE GOES THE ICON */}
+                </TouchableOpacity>
+                <Text style={styles.textHeader}>{title}</Text>
+            </View>
+
             <FlatList
+            ListHeaderComponent={()=>
+                <View style={{resizeMode: 'contain', width: width*0.2,height: width*0.2}}></View>
+            }
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
             data={photosState.photosList.filter(item => item.albumId == idAlbum)}
@@ -41,7 +54,6 @@ const Album = ({navigation, route}) => {
                     </TouchableOpacity>
                 )
             }}
-            
             />
         </SafeAreaView>
     );
