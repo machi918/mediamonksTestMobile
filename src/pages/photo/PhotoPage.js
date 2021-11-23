@@ -30,7 +30,7 @@ const PhotoPage = ({navigation, route}) => {
             handleTouchDisplay();
             clearInterval(timer);
             setTouched(false);
-        },1250);
+        },1000);
 
         return () => {
             clearInterval(timer);
