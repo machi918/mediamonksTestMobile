@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, Text, FlatList, View, TouchableOpacity, Dimensions, Button } from 'react-native';
-import Carousel from 'react-native-snap-carousel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from './Styles';
+import Carousel from '../../components/carousel/Carousel';
 import colors from '../../constants/colors';
 import Loading from '../../components/loading/Loading';
 import SingleAlbum from '../../components/singleAlbum/SingleAlbum';
@@ -12,12 +12,9 @@ import SingleAlbum from '../../components/singleAlbum/SingleAlbum';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAlbums } from '../../redux/ducks/albumsDucks';
 
-
 const {height, width} = Dimensions.get('window');
 
 const Home = ({navigation}) => {
-    
-    const carouselRef = useRef(null);
 
     //Dispatch declared for action calling
     const dispatch = useDispatch();
@@ -39,6 +36,7 @@ const Home = ({navigation}) => {
         try {
             await AsyncStorage.removeItem('albums');
             await AsyncStorage.removeItem('photos');
+            console.log('Storage limpiado');
         } catch(e) {
             // remove error
             console.log(e);
@@ -61,17 +59,9 @@ const Home = ({navigation}) => {
                     <Text style={[styles.textAlbumTitle, isDarkMode ? {color:colors.textColorDark}:{}]}>My First 5 Albums</Text>
 
                     <View style={[styles.carrouselContainer, isDarkMode ? {backgroundColor: colors.primaryDark} : {backgroundColor: colors.primary}]}>
-                        <Carousel
-                        ref={carouselRef}
-                        layout={'default'}
-                        data={albumsStateList.slice(0,5)}
-                        sliderWidth={width}
-                        itemWidth = {width*0.8}
-                        renderItem={(item) => 
-                            <TouchableOpacity onPress={() => handleOnClickAlbum(item)} style={styles.albumComponentMain}>
-                                <SingleAlbum title={item.item.title} src={photosStateList.filter(itemList => itemList.albumId == item.item.id)[0].thumbnailUrl} isTop={true}/>
-                            </TouchableOpacity>
-                        }
+                        <Carousel 
+                        navigation={navigation}
+                        albumsData={albumsStateList.slice(0,5)}
                         />
                     </View>
 
@@ -91,7 +81,6 @@ const Home = ({navigation}) => {
                         </TouchableOpacity>
                     }
                     />
-
                 </View>
             }
         </SafeAreaView>
