@@ -7,6 +7,7 @@ import styles from './Styles';
  * @description SingleAlbum component. Renders every album from HomePage. Receives title: String, src: String and isTop: boolean params.
  */
 const SingleAlbum = ({title, src, isTop}) => {
+
     return(
         <ImageBackground
         source={{uri :src }}
