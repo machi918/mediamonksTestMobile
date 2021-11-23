@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         marginTop: 10, 
         marginHorizontal: 10, 
         color: colors.textColor,
-        fontSize: 18
+        fontSize: 22
     },
 
     carrouselContainer:{
@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
 
         width: width*0.8,
         height: 200,
-
-        backgroundColor: 'rgba(0,0,0,0.2)',
+        
         marginVertical: 5,
 
         justifyContent: 'flex-end',
