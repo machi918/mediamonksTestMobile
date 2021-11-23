@@ -37,14 +37,13 @@ const MainNavigation = ({navigation}) => {
     return(
         <NavigationContainer>
 
-            <Stack.Navigator initialRouteName={'Home'}>
-                <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-                <Stack.Screen name="Album" component={Album} options={{ headerShown: true }} />
-                <Stack.Screen name="PhotoPage" component={PhotoPage} options={{ headerShown: true }} />
+            <Stack.Navigator initialRouteName={'Home'} screenOptions={{headerShown: false}}>
+                <Stack.Screen name="Home" component={Home}  />
+                <Stack.Screen name="Album" component={Album}  />
+                <Stack.Screen name="PhotoPage" component={PhotoPage} />
             </Stack.Navigator>
         
         </NavigationContainer>
-
     )
 
 };
